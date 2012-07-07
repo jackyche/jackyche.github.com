@@ -58,5 +58,17 @@ categories:
 	git add .
 	git commit -m "save markdown source"
 	git push jackyche source
+
+##以后每次发布博客的流程
+创建好博客系统之后，每次发布博客的流程会比上面快捷很多
+
+创建新文章和新页面
+	rake new_post["article name"]
+	rake new_page["page name"]
+编辑好博客之后，发布前预览
+	rake preview
+发布到GitHub个人博客
+	rake generate
+	rake deploy	
 	
 OK，到此为止，一个基于octopress的GitHub博客空间就创建完毕了。
