@@ -31,11 +31,12 @@ categories:
 安装相应的gem
 	bundle update
 在此之前，如果你没有安装RVM，请参照octopress官方的[指引](http://octopress.org/docs/setup/rvm/)安装。
+
 生成模版文件
 	rake install
  现在就可以开始分发到GitHub上了。这里要先保证你已经配置好了GitHub账号，以及创建了GitHub Pages Repo
 	cd octopress
-	git remove add jackyche git@github.com:jackyche/jackyche.github.com.git
+	git remote add jackyche git@github.com:jackyche/jackyche.github.com.git
 	
 ##编写测试博客
 你可以用以下命令新增博客
