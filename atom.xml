@@ -4,7 +4,7 @@
   <title><![CDATA[Simple Coding, Better Life]]></title>
   <link href="http://jackyche.github.com/atom.xml" rel="self"/>
   <link href="http://jackyche.github.com/"/>
-  <updated>2012-07-08T16:00:53+08:00</updated>
+  <updated>2012-07-08T16:31:01+08:00</updated>
   <id>http://jackyche.github.com/</id>
   <author>
     <name><![CDATA[Jackyche]]></name>
@@ -264,7 +264,10 @@ std::tr1::shared_ptr&lt;T&gt; ptr_b(new T());
 </span></code></pre></td></tr></table></div></figure>
 
 
-<hr />
+
+
+<br/>
+
 
 <p>基本上这次引入<code>std::tr1::shared_ptr</code>所用到的知识点就是以上了，如有纰漏，敬请指正。</p>
 ]]></content>
