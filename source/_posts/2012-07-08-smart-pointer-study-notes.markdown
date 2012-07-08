@@ -14,6 +14,8 @@ C++98里面只有一种智能指针，就是`std::auto_ptr`，但是它具有唯
 
 下面是使用`std::tr1::shared_ptr`过程中的一些学习笔记。
 
+<!-- more -->
+
 ##需要引入的头文件
 	#include<tr1/memory>
 ##声明并初始化一个std::tr1::shared_ptr

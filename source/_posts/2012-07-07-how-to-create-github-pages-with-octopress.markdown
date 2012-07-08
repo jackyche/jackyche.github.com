@@ -9,6 +9,8 @@ categories:
 
 这篇博客先记录一下搭建GitHub博客的流程。
 
+<!-- more -->
+
 ##配置GitHub账号:
 首先你当然需要一个[GitHub](https://github.com/)的账号，如果你没有，先去申请一个。
 
