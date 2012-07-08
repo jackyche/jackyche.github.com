@@ -142,5 +142,6 @@ tr1提供了`std::tr1::enable_shared_from_this`来解决这个问题，你可以
     	T& operator*() const { return *p; }
 	};
 {% endcodeblock %}	
-***
+
+<br/>
 基本上这次引入`std::tr1::shared_ptr`所用到的知识点就是以上了，如有纰漏，敬请指正。
