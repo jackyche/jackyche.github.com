@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Simple Coding, Better Life</title>
+  <title>std::tr1::shared_ptr学习笔记 - Simple Coding, Better Life</title>
   <meta name="author" content="Jackyche">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://jackyche.github.com/">
+  <link rel="canonical" href="http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -60,15 +60,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/07/08/smart-pointer-study-notes/">Std::tr1::shared_ptr学习笔记</a></h1>
+      <h1 class="entry-title">Std::tr1::shared_ptr学习笔记</h1>
     
     
       <p class="meta">
@@ -86,14 +83,14 @@
 
 <time datetime="2012-07-08T11:27:00+08:00" pubdate data-updated="true">Jul 8<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/07/08/smart-pointer-study-notes/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>C++有一个很头疼的事情，当程序比较复杂的时候，管理指针对象的生命周期，对程序员来说相当麻烦。《小小帝国》上一个版本的开发期间，经常出现由于对象没有被析构而产生的内存泄露，或者由于某个地方错误释放对象而导致的非法内存访问。考虑到以后不能一直这样耗功夫去关注这方面的事情，这个版本的《小小帝国》引入了智能指针。</p>
+<div class="entry-content"><p>C++有一个很头疼的事情，当程序比较复杂的时候，管理指针对象的生命周期，对程序员来说相当麻烦。《小小帝国》上一个版本的开发期间，经常出现由于对象没有被析构而产生的内存泄露，或者由于某个地方错误释放对象而导致的非法内存访问。考虑到以后不能一直这样耗功夫去关注这方面的事情，这个版本的《小小帝国》引入了智能指针。</p>
 
 <p>C++98里面只有一种智能指针，就是<code>std::auto_ptr</code>，但是它具有唯一所有权的特征，其实不好用(比如说你没有办法在容器中使用它)。《effective c++》作者推荐用的<code>std::tr1::shard_ptr</code>就好用很多，它采用RAII技术，通过引用计数的方式来自动管理对象的生存周期，基本上就符合我们的需求了。</p>
 
@@ -263,161 +260,16 @@ public:
 
 <p>基本上这次引入智能指针所用到的知识点就是以上了，如有纰漏，敬请指正。</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/08/markdown-syntax-study-notes/">Markdown语法学习笔记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Jackyche</span></span>
 
-<time datetime="2012-07-08T00:48:00+08:00" pubdate data-updated="true">Jul 8<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/07/08/markdown-syntax-study-notes/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Markdown的语法还是相当简单的，这篇博客分享一下基本的语法，以后在工作中的一些随手笔记可以用markdown语法来写，然后快速成文博客了。</p>
-
-<h2>标题</h2>
-
-<p>标题用<code>#</code>开头，一个<code>#</code>是一级标题，同理<code>##</code>是二级标题，以此类推。<code>#</code>越多字体越小</p>
-
-<pre><code>#一级标题
-##二级标题
-###三级标题
-####四级标题
-</code></pre>
-
-<h2>链接</h2>
-
-<pre><code>[text](link)
-</code></pre>
-
-<p>图片链接类似，区别是前面多一个叹号<code>!</code></p>
-
-<pre><code>![text](link)
-</code></pre>
-
-<h2>引用</h2>
-
-<p>用<code>&gt;</code>开始一个段落，这个段落就会显示为引用。如果要嵌套引用，那就多打几个<code>&gt;</code>。</p>
-
-<pre><code>&gt;我引用你啦！！！我引用你啦！！
-</code></pre>
-
-<blockquote><p>我引用你啦！！！我引用你啦！！</p></blockquote>
-
-<h2>文字效果</h2>
-
-<p>斜体：用<code>*</code>或者<code>_</code>包围</p>
-
-<pre><code>*斜体斜体*
-</code></pre>
-
-<p><em>斜体斜体</em></p>
-
-<p>粗体：用<code>**</code>或者<code>__</code>包围</p>
-
-<pre><code>**粗体**
-</code></pre>
-
-<p><strong>粗体</strong></p>
-
-<h2>列表</h2>
-
-<p>如果是无序列表，用<code>*</code>,<code>+</code>,<code>-</code>开头，然后留一个空格。子项缩进两个空格。</p>
-
-<pre><code>* 第一项
-* 第二项
-</code></pre>
-
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-</ul>
-
-
-<p>如果是有序列表，在第一条前添加一个数字，后跟一个英文句点<code>.</code>。无论第一个条目前加的数字是什么，列表都会从1开始计数。</p>
-
-<pre><code>1. 第一项
-2. 第二项
-</code></pre>
-
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-</ol>
-
-
-<h2>代码块</h2>
-
-<p>有两种方式，第一种是转义为html的<code>&lt;pre&gt;</code>标签：要在要原样输出的内容前面加入至少4个空格或者1个tab的宽度。</p>
-
-<pre><code>#include&lt;iostream&gt;
-int main() {
-    return 0;
-}
-</code></pre>
-
-<p>第二个是转义为<code>&lt;code&gt;</code>标签：给要输出的内容加上<code>`</code>号（就是esc下头那个键）。</p>
-
-<pre><code>`history | grep fuck`
-</code></pre>
-
-<h2>分割线</h2>
-
-<p>在一行中用三个或以上的<code>*</code>号或者<code>-</code>号，就能建立起一个分割线。注意：行内不能有空白以外的其它东西。</p>
-
-<pre><code>* * *
-***
-******
-- - - 
------------------------
-</code></pre>
-
-<hr />
-
-<p>嗯嗯，这些暂时差不多够我用了~~</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/07/how-to-create-github-pages-with-octopress/">搭建基于octopress的GitHub博客</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -429,145 +281,44 @@ int main() {
   
 
 
-<time datetime="2012-07-07T22:47:00+08:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/07/07/how-to-create-github-pages-with-octopress/#disqus_thread">Comments</a>
-        
-      </p>
+<time datetime="2012-07-08T11:27:00+08:00" pubdate data-updated="true">Jul 8<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-c-/'>C/C++</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>一直对<a href="https://github.com/">GitHub</a>上<a href="http://en.wikipedia.org/wiki/Markdown">markdown</a>语法快速成文的写作方式很感兴趣，这种方式入门略有门槛，但是习惯了写作效率会很高。项目稍微闲了下来，抽点空在GitHub上搭个基于<a href="http://octopress.org/">octopress</a>的博客空间，以后一些开发上的心得会在这里分享。</p>
-
-<p>这篇博客先记录一下搭建GitHub博客的流程。</p>
-
-<h2>配置GitHub账号:</h2>
-
-<p>首先你当然需要一个<a href="https://github.com/">GitHub</a>的账号，如果你没有，先去申请一个。</p>
-
-<p>需要在本地生成一个密钥，然后上传到GitHub。</p>
-
-<p>首先在终端中输入</p>
-
-<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
-</code></pre>
-
-<p>生成密钥之后，将生成的信息复制下来</p>
-
-<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] &amp;&amp; cat ~/.ssh/id_rsa.pub
-</code></pre>
-
-<p>在浏览器中打开页面 <a href="https://github.com/account/ssh">https://github.com/account/ssh</a>，点击“Add another public key” 添加密钥，粘贴之前复制的信息，然后点击“Add Key”即可。这里需要注意的是：Title不需要填写内容。</p>
-
-<h2>创建GitHub Pages Repo</h2>
-
-<p>如果你的GitHub用户名是username，那个就创建一个名称为”username.github.com”的repo，这个repo就是你的GitHub Pages Repo，更多信息可以参考<a href="http://pages.github.com/">这里</a>。</p>
-
-<h2>配置Octopress个人博客</h2>
-
-<p>首先你需要Git克隆一个octopress的仓库<br></p>
-
-<pre><code>git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-</code></pre>
-
-<p>安装相应的gem</p>
-
-<pre><code>bundle update
-</code></pre>
-
-<p>在此之前，如果你没有安装RVM，请参照octopress官方的<a href="http://octopress.org/docs/setup/rvm/">指引</a>安装。</p>
-
-<p>生成模版文件</p>
-
-<pre><code>rake install
-</code></pre>
-
-<p> 现在就可以开始分发到GitHub上了。这里要先保证你已经配置好了GitHub账号，以及创建了GitHub Pages Repo</p>
-
-<pre><code>cd octopress
-git remote add jackyche git@github.com:jackyche/jackyche.github.com.git
-</code></pre>
-
-<h2>编写测试博客</h2>
-
-<p>你可以用以下命令新增博客</p>
-
-<pre><code>rake new_post["new test blog"]
-</code></pre>
-
-<p>这里&#8221;new test blog&#8221;是博客的默认标题，它其实干的活是在source/_posts/目录下生成一个名字叫2012-07-07-new-test-blog的markdown模版文件（这里的时间是可变的）。所以你大概可以猜到不能用中文来做new_post的参数了，显示的标题可以在markdown文件里面修改。</p>
-
-<p>你需要稍微了解一下markdown的语法，然后编写完成你的博客，接下来就可以生成静态站点了。</p>
-
-<pre><code>rake generate
-</code></pre>
-
-<p>然后配置octopress与GitHub的连接</p>
-
-<pre><code>rake setup_github_pages
-</code></pre>
-
-<p>这里需要输入你的GitHub Pages Repo地址，格式如下</p>
-
-<pre><code>git@github.com:jackyche/jackyche.github.com.git
-</code></pre>
-
-<p>最后把你的博客分发到GitHub上去</p>
-
-<pre><code>rake deploy
-</code></pre>
-
-<p>嗯嗯~~现在就可以尝试浏览你的博客了</p>
-
-<pre><code>http://jackyche.github.com
-</code></pre>
-
-<h2>保存写作的markdown源文件</h2>
-
-<p>你的写作源当然很重要啊，所以需要创建一个新的GitHub的source分支，来保存你的创作源</p>
-
-<pre><code>git add .
-git commit -m "save markdown source"
-git push jackyche source
-</code></pre>
-
-<h2>以后每次发布博客的流程</h2>
-
-<p>创建好博客系统之后，每次发布博客的流程会比上面快捷很多</p>
-
-<p>创建新文章和新页面</p>
-
-<pre><code>rake new_post["article name"]
-rake new_page["page name"]
-</code></pre>
-
-<p>编辑好博客之后，发布前预览</p>
-
-<pre><code>rake preview
-</code></pre>
-
-<p>发布到GitHub个人博客</p>
-
-<pre><code>rake generate
-rake deploy 
-</code></pre>
-
-<p>OK，到此为止，一个基于octopress的GitHub博客空间就创建完毕了。</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes/" data-via="" data-counturl="http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/07/08/markdown-syntax-study-notes/" title="Previous Post: Markdown语法学习笔记">&laquo; Markdown语法学习笔记</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -601,6 +352,7 @@ rake deploy
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -615,7 +367,10 @@ rake deploy
       var disqus_shortname = 'jackyche';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes/';
+        var disqus_url = 'http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

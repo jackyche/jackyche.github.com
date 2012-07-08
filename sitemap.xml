@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>
+            http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress/
+        </loc>
+        <lastmod>2012-07-08T11:24:49+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes/</loc>
+        <lastmod>2012-07-08T11:24:49+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes/</loc>
+        <lastmod>2012-07-08T13:35:33+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jackyche.github.com/blog/archives/</loc>
+        <lastmod>2012-07-08T13:35:33+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://jackyche.github.com/</loc>
+        <lastmod>2012-07-08T13:35:33+08:00</lastmod>
+    </url>
+</urlset>

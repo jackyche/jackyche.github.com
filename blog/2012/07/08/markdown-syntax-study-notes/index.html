@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Markdown语法学习笔记 - Simple Coding, Better Life</title>
+  <meta name="author" content="Jackyche">
+
+  
+  <meta name="description" content="Markdown的语法还是相当简单的，这篇博客分享一下基本的语法，以后在工作中的一些随手笔记可以用markdown语法来写，然后快速成文博客了。 标题 标题用#开头，一个#是一级标题，同理##是二级标题，以此类推。#越多字体越小 #一级标题
+##二级标题
+###三级标题
+####四级标题 链接 [ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Simple Coding, Better Life" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Simple Coding, Better Life</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jackyche.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Markdown语法学习笔记</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-08T00:48:00+08:00" pubdate data-updated="true">Jul 8<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Markdown的语法还是相当简单的，这篇博客分享一下基本的语法，以后在工作中的一些随手笔记可以用markdown语法来写，然后快速成文博客了。</p>
+
+<h2>标题</h2>
+
+<p>标题用<code>#</code>开头，一个<code>#</code>是一级标题，同理<code>##</code>是二级标题，以此类推。<code>#</code>越多字体越小</p>
+
+<pre><code>#一级标题
+##二级标题
+###三级标题
+####四级标题
+</code></pre>
+
+<h2>链接</h2>
+
+<pre><code>[text](link)
+</code></pre>
+
+<p>图片链接类似，区别是前面多一个叹号<code>!</code></p>
+
+<pre><code>![text](link)
+</code></pre>
+
+<h2>引用</h2>
+
+<p>用<code>&gt;</code>开始一个段落，这个段落就会显示为引用。如果要嵌套引用，那就多打几个<code>&gt;</code>。</p>
+
+<pre><code>&gt;我引用你啦！！！我引用你啦！！
+</code></pre>
+
+<blockquote><p>我引用你啦！！！我引用你啦！！</p></blockquote>
+
+<h2>文字效果</h2>
+
+<p>斜体：用<code>*</code>或者<code>_</code>包围</p>
+
+<pre><code>*斜体斜体*
+</code></pre>
+
+<p><em>斜体斜体</em></p>
+
+<p>粗体：用<code>**</code>或者<code>__</code>包围</p>
+
+<pre><code>**粗体**
+</code></pre>
+
+<p><strong>粗体</strong></p>
+
+<h2>列表</h2>
+
+<p>如果是无序列表，用<code>*</code>,<code>+</code>,<code>-</code>开头，然后留一个空格。子项缩进两个空格。</p>
+
+<pre><code>* 第一项
+* 第二项
+</code></pre>
+
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+</ul>
+
+
+<p>如果是有序列表，在第一条前添加一个数字，后跟一个英文句点<code>.</code>。无论第一个条目前加的数字是什么，列表都会从1开始计数。</p>
+
+<pre><code>1. 第一项
+2. 第二项
+</code></pre>
+
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+</ol>
+
+
+<h2>代码块</h2>
+
+<p>有两种方式，第一种是转义为html的<code>&lt;pre&gt;</code>标签：要在要原样输出的内容前面加入至少4个空格或者1个tab的宽度。</p>
+
+<pre><code>#include&lt;iostream&gt;
+int main() {
+    return 0;
+}
+</code></pre>
+
+<p>第二个是转义为<code>&lt;code&gt;</code>标签：给要输出的内容加上<code>`</code>号（就是esc下头那个键）。</p>
+
+<pre><code>`history | grep fuck`
+</code></pre>
+
+<h2>分割线</h2>
+
+<p>在一行中用三个或以上的<code>*</code>号或者<code>-</code>号，就能建立起一个分割线。注意：行内不能有空白以外的其它东西。</p>
+
+<pre><code>* * *
+***
+******
+- - - 
+-----------------------
+</code></pre>
+
+<hr />
+
+<p>嗯嗯，这些暂时差不多够我用了~~</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jackyche</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-08T00:48:00+08:00" pubdate data-updated="true">Jul 8<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes/" data-via="" data-counturl="http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/07/07/how-to-create-github-pages-with-octopress/" title="Previous Post: 搭建基于octopress的GitHub博客">&laquo; 搭建基于octopress的GitHub博客</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/07/08/smart-pointer-study-notes/" title="Next Post: std::tr1::shared_ptr学习笔记">std::tr1::shared_ptr学习笔记 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/08/smart-pointer-study-notes/">std::tr1::shared_ptr学习笔记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/08/markdown-syntax-study-notes/">Markdown语法学习笔记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/07/how-to-create-github-pages-with-octopress/">搭建基于octopress的GitHub博客</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/c-c-'>C/C++ (1)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Jackyche -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'jackyche';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes/';
+        var disqus_url = 'http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

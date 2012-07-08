@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>搭建基于octopress的GitHub博客 - Simple Coding, Better Life</title>
+  <meta name="author" content="Jackyche">
+
+  
+  <meta name="description" content="一直对GitHub上markdown语法快速成文的写作方式很感兴趣，这种方式入门略有门槛，但是习惯了写作效率会很高。项目稍微闲了下来，抽点空在GitHub上搭个基于octopress的博客空间，以后一些开发上的心得会在这里分享。 这篇博客先记录一下搭建GitHub博客的流程。 配置GitHub账号 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Simple Coding, Better Life" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Simple Coding, Better Life</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jackyche.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">搭建基于octopress的GitHub博客</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-07T22:47:00+08:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>一直对<a href="https://github.com/">GitHub</a>上<a href="http://en.wikipedia.org/wiki/Markdown">markdown</a>语法快速成文的写作方式很感兴趣，这种方式入门略有门槛，但是习惯了写作效率会很高。项目稍微闲了下来，抽点空在GitHub上搭个基于<a href="http://octopress.org/">octopress</a>的博客空间，以后一些开发上的心得会在这里分享。</p>
+
+<p>这篇博客先记录一下搭建GitHub博客的流程。</p>
+
+<h2>配置GitHub账号:</h2>
+
+<p>首先你当然需要一个<a href="https://github.com/">GitHub</a>的账号，如果你没有，先去申请一个。</p>
+
+<p>需要在本地生成一个密钥，然后上传到GitHub。</p>
+
+<p>首先在终端中输入</p>
+
+<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
+</code></pre>
+
+<p>生成密钥之后，将生成的信息复制下来</p>
+
+<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] &amp;&amp; cat ~/.ssh/id_rsa.pub
+</code></pre>
+
+<p>在浏览器中打开页面 <a href="https://github.com/account/ssh">https://github.com/account/ssh</a>，点击“Add another public key” 添加密钥，粘贴之前复制的信息，然后点击“Add Key”即可。这里需要注意的是：Title不需要填写内容。</p>
+
+<h2>创建GitHub Pages Repo</h2>
+
+<p>如果你的GitHub用户名是username，那个就创建一个名称为”username.github.com”的repo，这个repo就是你的GitHub Pages Repo，更多信息可以参考<a href="http://pages.github.com/">这里</a>。</p>
+
+<h2>配置Octopress个人博客</h2>
+
+<p>首先你需要Git克隆一个octopress的仓库<br></p>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+</code></pre>
+
+<p>安装相应的gem</p>
+
+<pre><code>bundle update
+</code></pre>
+
+<p>在此之前，如果你没有安装RVM，请参照octopress官方的<a href="http://octopress.org/docs/setup/rvm/">指引</a>安装。</p>
+
+<p>生成模版文件</p>
+
+<pre><code>rake install
+</code></pre>
+
+<p> 现在就可以开始分发到GitHub上了。这里要先保证你已经配置好了GitHub账号，以及创建了GitHub Pages Repo</p>
+
+<pre><code>cd octopress
+git remote add jackyche git@github.com:jackyche/jackyche.github.com.git
+</code></pre>
+
+<h2>编写测试博客</h2>
+
+<p>你可以用以下命令新增博客</p>
+
+<pre><code>rake new_post["new test blog"]
+</code></pre>
+
+<p>这里&#8221;new test blog&#8221;是博客的默认标题，它其实干的活是在source/_posts/目录下生成一个名字叫2012-07-07-new-test-blog的markdown模版文件（这里的时间是可变的）。所以你大概可以猜到不能用中文来做new_post的参数了，显示的标题可以在markdown文件里面修改。</p>
+
+<p>你需要稍微了解一下markdown的语法，然后编写完成你的博客，接下来就可以生成静态站点了。</p>
+
+<pre><code>rake generate
+</code></pre>
+
+<p>然后配置octopress与GitHub的连接</p>
+
+<pre><code>rake setup_github_pages
+</code></pre>
+
+<p>这里需要输入你的GitHub Pages Repo地址，格式如下</p>
+
+<pre><code>git@github.com:jackyche/jackyche.github.com.git
+</code></pre>
+
+<p>最后把你的博客分发到GitHub上去</p>
+
+<pre><code>rake deploy
+</code></pre>
+
+<p>嗯嗯~~现在就可以尝试浏览你的博客了</p>
+
+<pre><code>http://jackyche.github.com
+</code></pre>
+
+<h2>保存写作的markdown源文件</h2>
+
+<p>你的写作源当然很重要啊，所以需要创建一个新的GitHub的source分支，来保存你的创作源</p>
+
+<pre><code>git add .
+git commit -m "save markdown source"
+git push jackyche source
+</code></pre>
+
+<h2>以后每次发布博客的流程</h2>
+
+<p>创建好博客系统之后，每次发布博客的流程会比上面快捷很多</p>
+
+<p>创建新文章和新页面</p>
+
+<pre><code>rake new_post["article name"]
+rake new_page["page name"]
+</code></pre>
+
+<p>编辑好博客之后，发布前预览</p>
+
+<pre><code>rake preview
+</code></pre>
+
+<p>发布到GitHub个人博客</p>
+
+<pre><code>rake generate
+rake deploy 
+</code></pre>
+
+<p>OK，到此为止，一个基于octopress的GitHub博客空间就创建完毕了。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jackyche</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-07T22:47:00+08:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress/" data-via="" data-counturl="http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/07/08/markdown-syntax-study-notes/" title="Next Post: Markdown语法学习笔记">Markdown语法学习笔记 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/08/smart-pointer-study-notes/">std::tr1::shared_ptr学习笔记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/08/markdown-syntax-study-notes/">Markdown语法学习笔记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/07/how-to-create-github-pages-with-octopress/">搭建基于octopress的GitHub博客</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/c-c-'>C/C++ (1)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Jackyche -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'jackyche';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress/';
+        var disqus_url = 'http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
