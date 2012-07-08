@@ -4,7 +4,7 @@
   <title><![CDATA[Simple Coding, Better Life]]></title>
   <link href="http://jackyche.github.com/atom.xml" rel="self"/>
   <link href="http://jackyche.github.com/"/>
-  <updated>2012-07-08T13:49:35+08:00</updated>
+  <updated>2012-07-08T15:24:53+08:00</updated>
   <id>http://jackyche.github.com/</id>
   <author>
     <name><![CDATA[Jackyche]]></name>
@@ -28,33 +28,50 @@
 
 <h2>需要引入的头文件</h2>
 
-<pre><code>#include&lt;tr1/memory&gt;
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'>    
+</span><span class='line'>  <span class="cp">#include&lt;tr1/memory&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>声明并初始化一个std::tr1::shared_ptr</h2>
 
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr(new T());  
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ptr</span><span class="p">(</span><span class="n">new</span> <span class="n">T</span><span class="p">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>返回实际的对象指针</h2>
 
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr(new T());
-T* = ptr.get();
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ptr</span><span class="p">(</span><span class="n">new</span> <span class="n">T</span><span class="p">());</span>
+</span><span class='line'><span class="n">T</span><span class="o">*</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>清空当前shared_ptr</h2>
 
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr(new T());
-ptr.reset();
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ptr</span><span class="p">(</span><span class="n">new</span> <span class="n">T</span><span class="p">());</span>
+</span><span class='line'><span class="n">ptr</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>这里所做的事情是：清空当前的<code>shared_ptr</code>，并且基于该指针所创建的其它<code>shared_ptr</code>指针的引用计数减一。</p>
 
 <h2>基类向下转型为子类</h2>
 
-<pre><code>std::tr1::shared_ptr&lt;A&gt; ptr_a(new A());
-std::tr1::shared_ptr&lt;B&gt; ptr_b = std::tr1::dynamic_pointer_cast&lt;B&gt;(ptr_a);
-</code></pre>
+<p>如果B是A的子类，那么向下转型是这样操作的</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">ptr_a</span><span class="p">(</span><span class="n">new</span> <span class="n">A</span><span class="p">());</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span> <span class="n">ptr_b</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">dynamic_pointer_cast</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ptr_a</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>如何打破循环引用</h2>
 
@@ -70,21 +87,31 @@ std::tr1::shared_ptr&lt;B&gt; ptr_b = std::tr1::dynamic_pointer_cast&lt;B&gt;(pt
 
 <p>下面的方式是不对的。</p>
 
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr_a(this);
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ptr_a</span><span class="p">(</span><span class="n">this</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>这种情况下，ptr_a对this的引用计数只有1，它没有办法知道其它智能指针对this指针的引用情况，所以当ptr_a的生命周期结束之后，它的引用计数变成0， 会把对象释放掉。这就导致其它智能指针的非法内存访问。</p>
 
 <p>tr1提供了<code>std::tr1::enable_shared_from_this</code>来解决这个问题，你可以使用它来作为对象的基类，然后就可以从this指针中引出具有统一引用计数的shared_ptr了。</p>
 
-<pre><code>class T : public std::tr1::enable_shared_from_this&lt;T&gt; 
-{ 
-public: 
-    std::tr1::shared_ptr&lt;T&gt; function() { 
-        return shared_from_this(); 
-    } 
-}; 
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">class</span> <span class="n">T</span> <span class="o">:</span> <span class="n">public</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">enable_shared_from_this</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="nl">public:</span>
+</span><span class='line'>      <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">shared_from_this</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>这里需要注意的一个问题是：<code>shared_from_this()</code>是通过一个对自己的 <code>weak_ptr</code>的引用来返回this的<code>shared_ptr</code>的，所以在返回智能指针的时候，你要确保对象已经构造完成。所以你不能在对象的构造函数里面调用<code>shared_from_this()</code>。</p>
 
@@ -94,19 +121,26 @@ public:
 
 <p>如果我们有两个智能指针ptr_a和ptr_b:</p>
 
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr_a(new T());
-std::tr1::shared_ptr&lt;T&gt; ptr_b(new T());
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ptr_a</span><span class="p">(</span><span class="n">new</span> <span class="n">T</span><span class="p">());</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ptr_b</span><span class="p">(</span><span class="n">new</span> <span class="n">T</span><span class="p">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>那么下面的指针比较</p>
 
-<pre><code>ptr_a == ptr_b
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">ptr_a</span> <span class="o">==</span> <span class="n">ptr_b</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>本质上其实是</p>
 
-<pre><code>ptr_a.get() == ptr_b.get()
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">ptr_a</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="n">ptr_b</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>std::tr1::shared_ptr到底是什么？</h2>
 
@@ -114,75 +148,145 @@ std::tr1::shared_ptr&lt;T&gt; ptr_b(new T());
 
 <p>下面是一个不完全的类定义，帮助理解</p>
 
-<pre><code>template&lt;class T&gt;
-class shared_ptr
-{
-    struct aux
-    {
-        unsigned count;
+<figure class='code'><figcaption><span>shared_ptr  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'>    <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">shared_ptr</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="k">struct</span> <span class="n">aux</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="n">count</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">aux</span><span class="p">()</span> <span class="o">:</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{}</span>
+</span><span class='line'>          <span class="k">virtual</span> <span class="kt">void</span> <span class="n">destroy</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">virtual</span> <span class="o">~</span><span class="n">aux</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">//must be polymorphic</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="p">,</span> <span class="n">class</span> <span class="n">Deleter</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="k">struct</span> <span class="n">auximpl</span><span class="o">:</span> <span class="n">public</span> <span class="n">aux</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="n">U</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">Deleter</span> <span class="n">d</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">anximpl</span><span class="p">(</span><span class="n">U</span><span class="o">*</span> <span class="n">pu</span><span class="p">,</span> <span class="n">Deleter</span> <span class="n">x</span><span class="p">)</span> <span class="o">:</span><span class="n">p</span><span class="p">(</span><span class="n">pu</span><span class="p">),</span> <span class="n">d</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{}</span>
+</span><span class='line'>          <span class="k">virtual</span> <span class="kt">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span> <span class="n">d</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="k">struct</span> <span class="n">default_deleter</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="kt">void</span> <span class="n">operator</span><span class="p">()(</span><span class="n">U</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="n">delete</span> <span class="n">p</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">aux</span><span class="o">*</span> <span class="n">pa</span><span class="p">;</span>
+</span><span class='line'>      <span class="n">T</span><span class="o">*</span> <span class="n">pt</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kt">void</span> <span class="nf">inc</span><span class="p">()</span> <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">pa</span><span class="p">)</span> <span class="n">interloked_inc</span><span class="p">(</span><span class="n">pa</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kt">void</span> <span class="nf">dec</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="n">pa</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">interlocked_dec</span><span class="p">(</span><span class="n">pa</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">))</span>
+</span><span class='line'>          <span class="p">{</span>  <span class="n">pa</span><span class="o">-&gt;</span><span class="n">destroy</span><span class="p">();</span> <span class="n">delete</span> <span class="n">pa</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="nl">public:</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">()</span> <span class="o">:</span><span class="n">pa</span><span class="p">(),</span> <span class="n">pt</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="p">,</span> <span class="n">class</span> <span class="n">Deleter</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">(</span><span class="n">U</span><span class="o">*</span> <span class="n">pu</span><span class="p">,</span> <span class="n">Deleter</span> <span class="n">d</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">new</span> <span class="n">auximpl</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="n">Deleter</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pu</span><span class="p">,</span><span class="n">d</span><span class="p">))</span> <span class="p">{}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="n">explicit</span> <span class="n">shared_ptr</span><span class="p">(</span><span class="n">U</span><span class="o">*</span> <span class="n">pu</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">new</span> <span class="n">auximpl</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="n">default_deleter</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">pu</span><span class="p">,</span><span class="n">default_deleter</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">()))</span> <span class="p">{}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pa</span><span class="p">),</span> <span class="n">pt</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pt</span><span class="p">)</span> <span class="p">{</span> <span class="n">inc</span><span class="p">();</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pa</span><span class="p">),</span> <span class="n">pt</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pt</span><span class="p">)</span> <span class="p">{</span> <span class="n">inc</span><span class="p">();</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">~</span><span class="n">shared_ptr</span><span class="p">()</span> <span class="p">{</span> <span class="n">dec</span><span class="p">();</span> <span class="p">}</span>
+</span><span class='line'>      <span class="n">shared_ptr</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="n">thsi</span><span class="o">!=&amp;</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">{</span>
+</span><span class='line'>              <span class="n">dec</span><span class="p">();</span>
+</span><span class='line'>              <span class="n">pa</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">pa</span><span class="p">;</span> <span class="n">pt</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">pt</span><span class="p">;</span>
+</span><span class='line'>              <span class="n">inc</span><span class="p">();</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>          <span class="k">return</span> <span class="o">*</span><span class="n">this</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">T</span><span class="o">*</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>      <span class="n">T</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-        aux() :count(1) {}
-        virtual void destroy()=0;
-        virtual ~aux() {} //must be polymorphic
-    };
-
-    template&lt;class U, class Deleter&gt;
-    struct auximpl: public aux
-    {
-        U* p;
-        Deleter d;
-
-        anximpl(U* pu, Deleter x) :p(pu), d(x) {}
-        virtual void destroy() { d(p); } 
-    };
-
-    template&lt;class U&gt;
-    struct default_deleter
-    {
-        void operator()(U* p) const { delete p; }
-    };
-
-    aux* pa;
-    T* pt;
-
-    void inc() { if(pa) interloked_inc(pa-&gt;count); }
-
-    void dec() 
-    { 
-        if(pa &amp;&amp; !interlocked_dec(pa-&gt;count)) 
-        {  pa-&gt;destroy(); delete pa; }
-    }
-public:
-
-    shared_ptr() :pa(), pt() {}
-
-    template&lt;class U, class Deleter&gt;
-    shared_ptr(U* pu, Deleter d) :pa(new auximpl&lt;U,Deleter&gt;(pu,d)) {}
-
-    template&lt;class U&gt;
-    explicit shared_ptr(U* pu) :pa(new auximpl&lt;U,default_deleter&lt;U&gt; &gt;(pu,default_deleter&lt;U&gt;())) {}
-
-    shared_ptr(const shared_ptr&amp; s) :pa(s.pa), pt(s.pt) { inc(); }
-
-    template&lt;class U&gt;
-    shared_ptr(const shared_ptr&lt;U&gt;&amp; s) :pa(s.pa), pt(s.pt) { inc(); }
-
-    ~shared_ptr() { dec(); }
-    shared_ptr&amp; operator=(const shared_ptr&amp; s)
-    {
-        if(thsi!=&amp;s)
-        {
-            dec();
-            pa = s.pa; pt=s.pt;
-            inc();
-        }        
-        return *this;
-    }
-
-    T* operator-&gt;() const { return p; }
-    T&amp; operator*() const { return *p; }
-};
-</code></pre>
 
 <hr />
 
