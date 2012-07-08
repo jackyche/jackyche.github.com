@@ -4,7 +4,7 @@
   <title><![CDATA[Simple Coding, Better Life]]></title>
   <link href="http://jackyche.github.com/atom.xml" rel="self"/>
   <link href="http://jackyche.github.com/"/>
-  <updated>2012-07-08T16:31:01+08:00</updated>
+  <updated>2012-07-08T20:41:51+08:00</updated>
   <id>http://jackyche.github.com/</id>
   <author>
     <name><![CDATA[Jackyche]]></name>
@@ -25,6 +25,9 @@
 <p>而且<code>std::tr1::shared_ptr</code>在最新的c++11中，已经被列入标准指针了，而c++98中的<code>std::auto_ptr</code>已经出局。</p>
 
 <p>下面是使用<code>std::tr1::shared_ptr</code>过程中的一些学习笔记。</p>
+
+<!-- more -->
+
 
 <h2>需要引入的头文件</h2>
 
@@ -280,6 +283,9 @@ std::tr1::shared_ptr&lt;T&gt; ptr_b(new T());
     <id>http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes</id>
     <content type="html"><![CDATA[<p>Markdown的语法还是相当简单的，这篇博客分享一下基本的语法，以后在工作中的一些随手笔记可以用markdown语法来写，然后快速成文博客了。</p>
 
+<!-- more -->
+
+
 <h2>标题</h2>
 
 <p>标题用<code>#</code>开头，一个<code>#</code>是一级标题，同理<code>##</code>是二级标题，以此类推。<code>#</code>越多字体越小</p>
@@ -391,6 +397,9 @@ int main() {
     <content type="html"><![CDATA[<p>一直对<a href="https://github.com/">GitHub</a>上<a href="http://en.wikipedia.org/wiki/Markdown">markdown</a>语法快速成文的写作方式很感兴趣，这种方式入门略有门槛，但是习惯了写作效率会很高。项目稍微闲了下来，抽点空在GitHub上搭个基于<a href="http://octopress.org/">octopress</a>的博客空间，以后一些开发上的心得会在这里分享。</p>
 
 <p>这篇博客先记录一下搭建GitHub博客的流程。</p>
+
+<!-- more -->
+
 
 <h2>配置GitHub账号:</h2>
 
