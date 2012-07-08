@@ -15,32 +15,25 @@ C++98里面只有一种智能指针，就是`std::auto_ptr`，但是它具有唯
 下面是使用`std::tr1::shared_ptr`过程中的一些学习笔记。
 
 ##需要引入的头文件
-{% codeblock lang:c %}	
 	#include<tr1/memory>
-{% endcodeblock %}	
 ##声明并初始化一个std::tr1::shared_ptr
-{% codeblock lang:c %}
-std::tr1::shared_ptr<T> ptr(new T());  
-{% endcodeblock %}
+	std::tr1::shared_ptr<T> ptr(new T());  
 ##返回实际的对象指针
-{% codeblock lang:c %}
-std::tr1::shared_ptr<T> ptr(new T());
-T* = ptr.get();
-{% endcodeblock %}	
+	std::tr1::shared_ptr<T> ptr(new T());
+	T* = ptr.get();
 ##清空当前shared_ptr
-{% codeblock lang:c %}
-std::tr1::shared_ptr<T> ptr(new T());
-ptr.reset();
-{% endcodeblock %}	
+	std::tr1::shared_ptr<T> ptr(new T());
+	ptr.reset();
 这里所做的事情是：清空当前的`shared_ptr`，并且基于该指针所创建的其它`shared_ptr`指针的引用计数减一。
-
+##智能指针判空
+	std::tr1::shared_ptr<T> ptr(new T());
+	if (ptr) {
+		// do something
+	}
 ##基类向下转型为子类
 如果B是A的子类，那么向下转型是这样操作的
-{% codeblock lang:c %}
-std::tr1::shared_ptr<A> ptr_a(new A());
-std::tr1::shared_ptr<B> ptr_b = std::tr1::dynamic_pointer_cast<B>(ptr_a);
-{% endcodeblock %}
-
+	std::tr1::shared_ptr<A> ptr_a(new A());
+	std::tr1::shared_ptr<B> ptr_b = std::tr1::dynamic_pointer_cast<B>(ptr_a);
 ##如何打破循环引用
 引用计数有个麻烦，它无法解决所谓循环引用的问题。比如有对象A和B，他们各自有一个智能指针指向对方，这种情况下对象是没有办法被释放的。
 
@@ -52,39 +45,29 @@ std::tr1::shared_ptr<B> ptr_b = std::tr1::dynamic_pointer_cast<B>(ptr_a);
 当我们手头上只有对象的原始指针，我们如何生成需要的`shared_ptr`。比如在对象的函数内部，我们只有`this`指针，从裸指针中我们怎么获取`shared_ptr`？
 
 下面的方式是不对的。
-{% codeblock lang:c %}
-std::tr1::shared_ptr<T> ptr_a(this);
-{% endcodeblock %}
+	std::tr1::shared_ptr<T> ptr_a(this);
 这种情况下，ptr_a对this的引用计数只有1，它没有办法知道其它智能指针对this指针的引用情况，所以当ptr_a的生命周期结束之后，它的引用计数变成0， 会把对象释放掉。这就导致其它智能指针的非法内存访问。
 
 tr1提供了`std::tr1::enable_shared_from_this`来解决这个问题，你可以使用它来作为对象的基类，然后就可以从this指针中引出具有统一引用计数的shared_ptr了。
-{% codeblock lang:c %}
-class T : public std::tr1::enable_shared_from_this<T> 
-{ 
-public: 
-  	std::tr1::shared_ptr<T> function() { 
-    	return shared_from_this(); 
-  	} 
-}; 
-{% endcodeblock %}	
+	class T : public std::tr1::enable_shared_from_this<T> 
+	{ 
+	public: 
+  		std::tr1::shared_ptr<T> function() { 
+    		return shared_from_this(); 
+  		} 
+	}; 
 这里需要注意的一个问题是：`shared_from_this()`是通过一个对自己的 `weak_ptr`的引用来返回this的`shared_ptr`的，所以在返回智能指针的时候，你要确保对象已经构造完成。所以你不能在对象的构造函数里面调用`shared_from_this()`。
 
 ##智能指针的比较
 可以拿两个智能指针来做比较，从源码上来看，本质上它是直接拿原始指针来做比较的。
 
 如果我们有两个智能指针ptr_a和ptr_b:
-{% codeblock lang:c %}
-std::tr1::shared_ptr<T> ptr_a(new T());
-std::tr1::shared_ptr<T> ptr_b(new T());
-{% endcodeblock %}
+	std::tr1::shared_ptr<T> ptr_a(new T());
+	std::tr1::shared_ptr<T> ptr_b(new T());
 那么下面的指针比较
-{% codeblock lang:c %}
-ptr_a == ptr_b;
-{% endcodeblock %}	
+	ptr_a == ptr_b;
 本质上其实是
-{% codeblock lang:c %}
-ptr_a.get() == ptr_b.get()
-{% endcodeblock %}	
+	ptr_a.get() == ptr_b.get()
 ##std::tr1::shared_ptr到底是什么？ 
 `shared_ptr`本质上持有两个东西：一个是对象的原始指针`T*`，所以你可以通过`get()`函数获取到。另外它还持有一个全局的计数器`aux*`，它通过对象的拷贝构造函数、析构函数来对引用计数进行加减。
 
@@ -160,4 +143,4 @@ ptr_a.get() == ptr_b.get()
 	};
 {% endcodeblock %}	
 ***
-基本上这次引入智能指针所用到的知识点就是以上了，如有纰漏，敬请指正。
+基本上这次引入`std::tr1::shared_ptr`所用到的知识点就是以上了，如有纰漏，敬请指正。
