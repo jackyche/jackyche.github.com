@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "关于我"
+title: "屌丝独白"
 date: 2012-07-08 15:38
 comments: false
 sharing: true
