@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Simple Coding, Better Life]]></title>
   <link href="http://jackyche.github.com/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://jackyche.github.com/"/>
-  <updated>2012-07-22T16:03:29+08:00</updated>
+  <updated>2012-07-22T20:34:46+08:00</updated>
   <id>http://jackyche.github.com/</id>
   <author>
     <name><![CDATA[Jackyche]]></name>
@@ -315,7 +315,7 @@
 </span><span class='line'><span class="nt">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>这里需要编译生成的R.cpp，以及经过Antenna处理过的中间代码。</p>
+<p>这里需要编译生成的R.java，以及经过Antenna处理过的中间代码。</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>将class文件转换成classes.dex文件  </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
