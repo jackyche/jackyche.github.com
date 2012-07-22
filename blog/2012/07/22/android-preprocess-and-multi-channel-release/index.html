@@ -1,24 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Simple Coding, Better Life]]></title>
-  <link href="http://jackyche.github.com/atom.xml" rel="self"/>
-  <link href="http://jackyche.github.com/"/>
-  <updated>2012-07-22T14:50:47+08:00</updated>
-  <id>http://jackyche.github.com/</id>
-  <author>
-    <name><![CDATA[Jackyche]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Android编译预处理及多渠道发布 - Simple Coding, Better Life</title>
+  <meta name="author" content="Jackyche">
 
   
-  <entry>
-    <title type="html"><![CDATA[Android编译预处理及多渠道发布]]></title>
-    <link href="http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release/"/>
-    <updated>2012-07-22T11:06:00+08:00</updated>
-    <id>http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release</id>
-    <content type="html"><![CDATA[<p>Android游戏在国内的渠道实在太乱了，像UC、91、QQ、应用汇、安智市场、N多网这样的平台，大大小小几十个。一款游戏如果在所有的渠道上发布，还得为每个渠道定制相应的版本。这种活如果人肉一个渠道一个渠道地去做，有点劳民伤财。考虑到不同渠道的版本在代码和资源上99%都是相同的，这种事情就应该用脚本去做。</p>
+  <meta name="description" content="Android游戏在国内的渠道实在太乱了，像UC、91、QQ、应用汇、安智市场、N多网这样的平台，大大小小几十个。一款游戏如果在所有的渠道上发布，还得为每个渠道定制相应的版本。这种活如果人肉一个渠道一个渠道地去做，有点劳民伤财。考虑到不同渠道的版本在代码和资源上99%都是相同的， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Simple Coding, Better Life" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33231745-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Simple Coding, Better Life</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jackyche.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Android编译预处理及多渠道发布</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-22T11:06:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Android游戏在国内的渠道实在太乱了，像UC、91、QQ、应用汇、安智市场、N多网这样的平台，大大小小几十个。一款游戏如果在所有的渠道上发布，还得为每个渠道定制相应的版本。这种活如果人肉一个渠道一个渠道地去做，有点劳民伤财。考虑到不同渠道的版本在代码和资源上99%都是相同的，这种事情就应该用脚本去做。</p>
 
 <p>五六年前J2ME游戏经常需要为上百款设备做适配，当时比较流行的发布策略是<a href="http://ant.apache.org/">Ant</a> + <a href="http://antenna.sourceforge.net/">Antenna</a>。考虑了一下，这种策略对于应付Android的多渠道也是绰绰有余的。</p>
 
@@ -457,511 +542,149 @@
 <li><a href="http://www.cnblogs.com/qianxudetianxia/archive/2012/07/04/2573687.html">http://www.cnblogs.com/qianxudetianxia/archive/2012/07/04/2573687.html</a></li>
 </ul>
 
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[std::tr1::shared_ptr学习笔记]]></title>
-    <link href="http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes/"/>
-    <updated>2012-07-08T11:27:00+08:00</updated>
-    <id>http://jackyche.github.com/blog/2012/07/08/smart-pointer-study-notes</id>
-    <content type="html"><![CDATA[<p>C++有一个很头疼的事情，当程序比较复杂的时候，管理指针对象的生命周期，对程序员来说相当麻烦。《小小帝国》上一个版本的开发期间，经常出现由于对象没有被析构而产生的内存泄露，或者由于某个地方错误释放对象而导致的非法内存访问。考虑到以后不能一直这样耗功夫去关注这方面的事情，这个版本的《小小帝国》引入了智能指针。</p>
 
-<p>C++98里面只有一种智能指针，就是<code>std::auto_ptr</code>，但是它具有唯一所有权的特征，其实不好用(比如说你没有办法在容器中使用它)。《effective c++》作者推荐用的<code>std::tr1::shard_ptr</code>就好用很多，它采用RAII技术，通过引用计数的方式来自动管理对象的生存周期，基本上就符合我们的需求了。</p>
+<span class="byline author vcard">Posted by <span class="fn">Jackyche</span></span>
 
-<p>而且<code>std::tr1::shared_ptr</code>在最新的c++11中，已经被列入标准指针了，而c++98中的<code>std::auto_ptr</code>已经出局。</p>
-
-<p>下面是使用<code>std::tr1::shared_ptr</code>过程中的一些学习笔记。</p>
-
-<!-- more -->
-
-
-<h2>需要引入的头文件</h2>
-
-<pre><code>#include&lt;tr1/memory&gt;
-</code></pre>
-
-<h2>声明并初始化一个std::tr1::shared_ptr</h2>
-
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr(new T());  
-</code></pre>
-
-<h2>返回实际的对象指针</h2>
-
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr(new T());
-T* = ptr.get();
-</code></pre>
-
-<h2>清空当前shared_ptr</h2>
-
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr(new T());
-ptr.reset();
-</code></pre>
-
-<p>这里所做的事情是：清空当前的<code>shared_ptr</code>，并且基于该指针所创建的其它<code>shared_ptr</code>指针的引用计数减一。</p>
-
-<h2>智能指针判空</h2>
-
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr(new T());
-if (ptr) {
-    // do something
-}
-</code></pre>
-
-<h2>基类向下转型为子类</h2>
-
-<p>如果B是A的子类，那么向下转型是这样操作的</p>
-
-<pre><code>std::tr1::shared_ptr&lt;A&gt; ptr_a(new A());
-std::tr1::shared_ptr&lt;B&gt; ptr_b = std::tr1::dynamic_pointer_cast&lt;B&gt;(ptr_a);
-</code></pre>
-
-<h2>如何打破循环引用</h2>
-
-<p>引用计数有个麻烦，它无法解决所谓循环引用的问题。比如有对象A和B，他们各自有一个智能指针指向对方，这种情况下对象是没有办法被释放的。</p>
-
-<p>这种情况下，我们需要在打破循环的地方使用<code>std::tr1::weak_ptr</code>。<code>weak_ptr</code>是稍微“弱”一点的智能指针，它不会增加引用计数，但是在指针生命结束以后，又会把引用计数减一，从而可以打破循环引用的死锁情况。</p>
-
-<p>所以在使用<code>shared_ptr</code>的时候，如果有引起循环引用的情况，需要在程序的某处使用<code>weak_ptr</code>，打破死锁情况，使得对象能够被正常释放。</p>
-
-<h2>如果我们手头上只有对象的原始指针，那怎么办？</h2>
-
-<p>当我们手头上只有对象的原始指针，我们如何生成需要的<code>shared_ptr</code>。比如在对象的函数内部，我们只有<code>this</code>指针，从裸指针中我们怎么获取<code>shared_ptr</code>？</p>
-
-<p>下面的方式是不对的。</p>
-
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr_a(this);
-</code></pre>
-
-<p>这种情况下，ptr_a对this的引用计数只有1，它没有办法知道其它智能指针对this指针的引用情况，所以当ptr_a的生命周期结束之后，它的引用计数变成0， 会把对象释放掉。这就导致其它智能指针的非法内存访问。</p>
-
-<p>tr1提供了<code>std::tr1::enable_shared_from_this</code>来解决这个问题，你可以使用它来作为对象的基类，然后就可以从this指针中引出具有统一引用计数的shared_ptr了。</p>
-
-<pre><code>class T : public std::tr1::enable_shared_from_this&lt;T&gt; 
-{ 
-public: 
-    std::tr1::shared_ptr&lt;T&gt; function() { 
-        return shared_from_this(); 
-    } 
-}; 
-</code></pre>
-
-<p>这里需要注意的一个问题是：<code>shared_from_this()</code>是通过一个对自己的 <code>weak_ptr</code>的引用来返回this的<code>shared_ptr</code>的，所以在返回智能指针的时候，你要确保对象已经构造完成。所以你不能在对象的构造函数里面调用<code>shared_from_this()</code>。</p>
-
-<h2>智能指针的比较</h2>
-
-<p>可以拿两个智能指针来做比较，从源码上来看，本质上它是直接拿原始指针来做比较的。</p>
-
-<p>如果我们有两个智能指针ptr_a和ptr_b:</p>
-
-<pre><code>std::tr1::shared_ptr&lt;T&gt; ptr_a(new T());
-std::tr1::shared_ptr&lt;T&gt; ptr_b(new T());
-</code></pre>
-
-<p>那么下面的指针比较</p>
-
-<pre><code>ptr_a == ptr_b;
-</code></pre>
-
-<p>本质上其实是</p>
-
-<pre><code>ptr_a.get() == ptr_b.get()
-</code></pre>
-
-<h2>std::tr1::shared_ptr到底是什么？</h2>
-
-<p><code>shared_ptr</code>本质上持有两个东西：一个是对象的原始指针<code>T*</code>，所以你可以通过<code>get()</code>函数获取到。另外它还持有一个全局的计数器<code>aux*</code>，它通过对象的拷贝构造函数、析构函数来对引用计数进行加减。</p>
-
-<p>下面是一个不完全的类定义，帮助理解</p>
-
-<figure class='code'><figcaption><span>shared_ptr  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'>    <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="n">class</span> <span class="n">shared_ptr</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>      <span class="k">struct</span> <span class="n">aux</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          <span class="kt">unsigned</span> <span class="n">count</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="n">aux</span><span class="p">()</span> <span class="o">:</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{}</span>
-</span><span class='line'>          <span class="k">virtual</span> <span class="kt">void</span> <span class="n">destroy</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>          <span class="k">virtual</span> <span class="o">~</span><span class="n">aux</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">//must be polymorphic</span>
-</span><span class='line'>      <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="p">,</span> <span class="n">class</span> <span class="n">Deleter</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="k">struct</span> <span class="n">auximpl</span><span class="o">:</span> <span class="n">public</span> <span class="n">aux</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          <span class="n">U</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span>
-</span><span class='line'>          <span class="n">Deleter</span> <span class="n">d</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="n">anximpl</span><span class="p">(</span><span class="n">U</span><span class="o">*</span> <span class="n">pu</span><span class="p">,</span> <span class="n">Deleter</span> <span class="n">x</span><span class="p">)</span> <span class="o">:</span><span class="n">p</span><span class="p">(</span><span class="n">pu</span><span class="p">),</span> <span class="n">d</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{}</span>
-</span><span class='line'>          <span class="k">virtual</span> <span class="kt">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span> <span class="n">d</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'>      <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="k">struct</span> <span class="n">default_deleter</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          <span class="kt">void</span> <span class="n">operator</span><span class="p">()(</span><span class="n">U</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="n">delete</span> <span class="n">p</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>      <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">aux</span><span class="o">*</span> <span class="n">pa</span><span class="p">;</span>
-</span><span class='line'>      <span class="n">T</span><span class="o">*</span> <span class="n">pt</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="kt">void</span> <span class="nf">inc</span><span class="p">()</span> <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="n">pa</span><span class="p">)</span> <span class="n">interloked_inc</span><span class="p">(</span><span class="n">pa</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="kt">void</span> <span class="nf">dec</span><span class="p">()</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="n">pa</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">interlocked_dec</span><span class="p">(</span><span class="n">pa</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">))</span>
-</span><span class='line'>          <span class="p">{</span>  <span class="n">pa</span><span class="o">-&gt;</span><span class="n">destroy</span><span class="p">();</span> <span class="n">delete</span> <span class="n">pa</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="nl">public:</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">()</span> <span class="o">:</span><span class="n">pa</span><span class="p">(),</span> <span class="n">pt</span><span class="p">()</span> <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="p">,</span> <span class="n">class</span> <span class="n">Deleter</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">(</span><span class="n">U</span><span class="o">*</span> <span class="n">pu</span><span class="p">,</span> <span class="n">Deleter</span> <span class="n">d</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">new</span> <span class="n">auximpl</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="n">Deleter</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pu</span><span class="p">,</span><span class="n">d</span><span class="p">))</span> <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="n">explicit</span> <span class="n">shared_ptr</span><span class="p">(</span><span class="n">U</span><span class="o">*</span> <span class="n">pu</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">new</span> <span class="n">auximpl</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="n">default_deleter</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">pu</span><span class="p">,</span><span class="n">default_deleter</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">()))</span> <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pa</span><span class="p">),</span> <span class="n">pt</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pt</span><span class="p">)</span> <span class="p">{</span> <span class="n">inc</span><span class="p">();</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">template</span><span class="o">&lt;</span><span class="n">class</span> <span class="n">U</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="n">shared_ptr</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="o">:</span><span class="n">pa</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pa</span><span class="p">),</span> <span class="n">pt</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">pt</span><span class="p">)</span> <span class="p">{</span> <span class="n">inc</span><span class="p">();</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="o">~</span><span class="n">shared_ptr</span><span class="p">()</span> <span class="p">{</span> <span class="n">dec</span><span class="p">();</span> <span class="p">}</span>
-</span><span class='line'>      <span class="n">shared_ptr</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="n">thsi</span><span class="o">!=&amp;</span><span class="n">s</span><span class="p">)</span>
-</span><span class='line'>          <span class="p">{</span>
-</span><span class='line'>              <span class="n">dec</span><span class="p">();</span>
-</span><span class='line'>              <span class="n">pa</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">pa</span><span class="p">;</span> <span class="n">pt</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">pt</span><span class="p">;</span>
-</span><span class='line'>              <span class="n">inc</span><span class="p">();</span>
-</span><span class='line'>          <span class="p">}</span>
-</span><span class='line'>          <span class="k">return</span> <span class="o">*</span><span class="n">this</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">T</span><span class="o">*</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>      <span class="n">T</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>  <span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+      
 
 
 
 
-<br/>
 
 
-<p>基本上这次引入<code>std::tr1::shared_ptr</code>所用到的知识点就是以上了，如有纰漏，敬请指正。</p>
-]]></content>
-  </entry>
+
+
   
-  <entry>
-    <title type="html"><![CDATA[Markdown语法学习笔记]]></title>
-    <link href="http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes/"/>
-    <updated>2012-07-08T00:48:00+08:00</updated>
-    <id>http://jackyche.github.com/blog/2012/07/08/markdown-syntax-study-notes</id>
-    <content type="html"><![CDATA[<p>Markdown的语法还是相当简单的，这篇博客分享一下基本的语法，以后在工作中的一些随手笔记可以用markdown语法来写，然后快速成文博客了。</p>
-
-<!-- more -->
 
 
-<h2>标题</h2>
+<time datetime="2012-07-22T11:06:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2012</time>
+      
 
-<p>标题用<code>#</code>开头，一个<code>#</code>是一级标题，同理<code>##</code>是二级标题，以此类推。<code>#</code>越多字体越小</p>
-
-<pre><code>#一级标题
-##二级标题
-###三级标题
-####四级标题
-</code></pre>
-
-<h2>链接</h2>
-
-<pre><code>[text](link)
-</code></pre>
-
-<p>图片链接类似，区别是前面多一个叹号<code>!</code></p>
-
-<pre><code>![text](link)
-</code></pre>
-
-<h2>引用</h2>
-
-<p>用<code>&gt;</code>开始一个段落，这个段落就会显示为引用。如果要嵌套引用，那就多打几个<code>&gt;</code>。</p>
-
-<pre><code>&gt;我引用你啦！！！我引用你啦！！
-</code></pre>
-
-<blockquote><p>我引用你啦！！！我引用你啦！！</p></blockquote>
-
-<h2>文字效果</h2>
-
-<p>斜体：用<code>*</code>或者<code>_</code>包围</p>
-
-<pre><code>*斜体斜体*
-</code></pre>
-
-<p><em>斜体斜体</em></p>
-
-<p>粗体：用<code>**</code>或者<code>__</code>包围</p>
-
-<pre><code>**粗体**
-</code></pre>
-
-<p><strong>粗体</strong></p>
-
-<h2>列表</h2>
-
-<p>如果是无序列表，用<code>*</code>,<code>+</code>,<code>-</code>开头，然后留一个空格。子项缩进两个空格。</p>
-
-<pre><code>* 第一项
-* 第二项
-</code></pre>
-
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-</ul>
-
-
-<p>如果是有序列表，在第一条前添加一个数字，后跟一个英文句点<code>.</code>。无论第一个条目前加的数字是什么，列表都会从1开始计数。</p>
-
-<pre><code>1. 第一项
-2. 第二项
-</code></pre>
-
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-</ol>
-
-
-<h2>代码块</h2>
-
-<p>有两种方式，第一种是转义为html的<code>&lt;pre&gt;</code>标签：要在要原样输出的内容前面加入至少4个空格或者1个tab的宽度。</p>
-
-<pre><code>#include&lt;iostream&gt;
-int main() {
-    return 0;
-}
-</code></pre>
-
-<p>第二个是转义为<code>&lt;code&gt;</code>标签：给要输出的内容加上<code>`</code>号（就是esc下头那个键）。</p>
-
-<pre><code>`history | grep fuck`
-</code></pre>
-
-<h2>分割线</h2>
-
-<p>在一行中用三个或以上的<code>*</code>号或者<code>-</code>号，就能建立起一个分割线。注意：行内不能有空白以外的其它东西。</p>
-
-<pre><code>* * *
-***
-******
-- - - 
------------------------
-</code></pre>
-
-<hr />
-
-<p>嗯嗯，这些暂时差不多够我用了~~</p>
-]]></content>
-  </entry>
+<span class="categories">
   
-  <entry>
-    <title type="html"><![CDATA[搭建基于octopress的GitHub博客]]></title>
-    <link href="http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress/"/>
-    <updated>2012-07-07T22:47:00+08:00</updated>
-    <id>http://jackyche.github.com/blog/2012/07/07/how-to-create-github-pages-with-octopress</id>
-    <content type="html"><![CDATA[<p>一直对<a href="https://github.com/">GitHub</a>上<a href="http://en.wikipedia.org/wiki/Markdown">markdown</a>语法快速成文的写作方式很感兴趣，这种方式入门略有门槛，但是习惯了写作效率会很高。项目稍微闲了下来，抽点空在GitHub上搭个基于<a href="http://octopress.org/">octopress</a>的博客空间，以后一些开发上的心得会在这里分享。</p>
-
-<p>这篇博客先记录一下搭建GitHub博客的流程。</p>
-
-<!-- more -->
-
-
-<h2>配置GitHub账号:</h2>
-
-<p>首先你当然需要一个<a href="https://github.com/">GitHub</a>的账号，如果你没有，先去申请一个。</p>
-
-<p>需要在本地生成一个密钥，然后上传到GitHub。</p>
-
-<p>首先在终端中输入</p>
-
-<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
-</code></pre>
-
-<p>生成密钥之后，将生成的信息复制下来</p>
-
-<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] &amp;&amp; cat ~/.ssh/id_rsa.pub
-</code></pre>
-
-<p>在浏览器中打开页面 <a href="https://github.com/account/ssh">https://github.com/account/ssh</a>，点击“Add another public key” 添加密钥，粘贴之前复制的信息，然后点击“Add Key”即可。这里需要注意的是：Title不需要填写内容。</p>
-
-<h2>创建GitHub Pages Repo</h2>
-
-<p>如果你的GitHub用户名是username，那个就创建一个名称为”username.github.com”的repo，这个repo就是你的GitHub Pages Repo，更多信息可以参考<a href="http://pages.github.com/">这里</a>。</p>
-
-<h2>配置Octopress个人博客</h2>
-
-<p>首先你需要Git克隆一个octopress的仓库<br></p>
-
-<pre><code>git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-</code></pre>
-
-<p>安装相应的gem</p>
-
-<pre><code>bundle update
-</code></pre>
-
-<p>在此之前，如果你没有安装RVM，请参照octopress官方的<a href="http://octopress.org/docs/setup/rvm/">指引</a>安装。</p>
-
-<p>生成模版文件</p>
-
-<pre><code>rake install
-</code></pre>
-
-<p> 现在就可以开始分发到GitHub上了。这里要先保证你已经配置好了GitHub账号，以及创建了GitHub Pages Repo</p>
-
-<pre><code>cd octopress
-git remote add jackyche git@github.com:jackyche/jackyche.github.com.git
-</code></pre>
-
-<h2>编写测试博客</h2>
-
-<p>你可以用以下命令新增博客</p>
-
-<pre><code>rake new_post["new test blog"]
-</code></pre>
-
-<p>这里&#8221;new test blog&#8221;是博客的默认标题，它其实干的活是在source/_posts/目录下生成一个名字叫2012-07-07-new-test-blog的markdown模版文件（这里的时间是可变的）。所以你大概可以猜到不能用中文来做new_post的参数了，显示的标题可以在markdown文件里面修改。</p>
-
-<p>你需要稍微了解一下markdown的语法，然后编写完成你的博客，接下来就可以生成静态站点了。</p>
-
-<pre><code>rake generate
-</code></pre>
-
-<p>然后配置octopress与GitHub的连接</p>
-
-<pre><code>rake setup_github_pages
-</code></pre>
-
-<p>这里需要输入你的GitHub Pages Repo地址，格式如下</p>
-
-<pre><code>git@github.com:jackyche/jackyche.github.com.git
-</code></pre>
-
-<p>最后把你的博客分发到GitHub上去</p>
-
-<pre><code>rake deploy
-</code></pre>
-
-<p>嗯嗯~~现在就可以尝试浏览你的博客了</p>
-
-<pre><code>http://jackyche.github.com
-</code></pre>
-
-<h2>保存写作的markdown源文件</h2>
-
-<p>你的写作源当然很重要啊，所以需要创建一个新的GitHub的source分支，来保存你的创作源</p>
-
-<pre><code>git add .
-git commit -m "save markdown source"
-git push jackyche source
-</code></pre>
-
-<h2>以后每次发布博客的流程</h2>
-
-<p>创建好博客系统之后，每次发布博客的流程会比上面快捷很多</p>
-
-<p>创建新文章和新页面</p>
-
-<pre><code>rake new_post["article name"]
-rake new_page["page name"]
-</code></pre>
-
-<p>编辑好博客之后，发布前预览</p>
-
-<pre><code>rake preview
-</code></pre>
-
-<p>发布到GitHub个人博客</p>
-
-<pre><code>rake generate
-rake deploy 
-</code></pre>
-
-<p>OK，到此为止，一个基于octopress的GitHub博客空间就创建完毕了。</p>
-]]></content>
-  </entry>
+    <a class='category' href='/blog/categories/android/'>Android</a>
   
-</feed>
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release/" data-via="" data-counturl="http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/07/08/smart-pointer-study-notes/" title="Previous Post: std::tr1::shared_ptr学习笔记">&laquo; std::tr1::shared_ptr学习笔记</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/22/android-preprocess-and-multi-channel-release/">Android编译预处理及多渠道发布</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/08/smart-pointer-study-notes/">std::tr1::shared_ptr学习笔记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/08/markdown-syntax-study-notes/">Markdown语法学习笔记</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/07/how-to-create-github-pages-with-octopress/">搭建基于octopress的GitHub博客</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/c-c-'>C/C++ (1)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Jackyche -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'jackyche';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release/';
+        var disqus_url = 'http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
