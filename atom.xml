@@ -4,7 +4,7 @@
   <title><![CDATA[Simple Coding, Better Life]]></title>
   <link href="http://jackyche.github.com/atom.xml" rel="self"/>
   <link href="http://jackyche.github.com/"/>
-  <updated>2012-07-22T14:50:47+08:00</updated>
+  <updated>2012-07-22T16:03:29+08:00</updated>
   <id>http://jackyche.github.com/</id>
   <author>
     <name><![CDATA[Jackyche]]></name>
@@ -18,7 +18,7 @@
     <link href="http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release/"/>
     <updated>2012-07-22T11:06:00+08:00</updated>
     <id>http://jackyche.github.com/blog/2012/07/22/android-preprocess-and-multi-channel-release</id>
-    <content type="html"><![CDATA[<p>Android游戏在国内的渠道实在太乱了，像UC、91、QQ、应用汇、安智市场、N多网这样的平台，大大小小几十个。一款游戏如果在所有的渠道上发布，还得为每个渠道定制相应的版本。这种活如果人肉一个渠道一个渠道地去做，有点劳民伤财。考虑到不同渠道的版本在代码和资源上99%都是相同的，这种事情就应该用脚本去做。</p>
+    <content type="html"><![CDATA[<p>Android游戏在国内的渠道实在太乱了，像UC、91、QQ、应用汇、安智市场、N多网这样的平台，大大小小几十个。一款游戏如果需要在所有的渠道上发布，还得为每个渠道定制相应的版本。这种活如果人肉一个渠道一个渠道去做，有点劳民伤财。考虑到不同渠道的版本在代码和资源上99%都是相同的，这种事情应该用脚本去完成。</p>
 
 <p>五六年前J2ME游戏经常需要为上百款设备做适配，当时比较流行的发布策略是<a href="http://ant.apache.org/">Ant</a> + <a href="http://antenna.sourceforge.net/">Antenna</a>。考虑了一下，这种策略对于应付Android的多渠道也是绰绰有余的。</p>
 
@@ -29,9 +29,9 @@
 
 <p>不同渠道的版本，通常情况下差异在两个方面：少量代码 + 资源。</p>
 
-<h3>首先来处理代码的差异性。</h3>
+<h3>首先处理代码的差异性：</h3>
 
-<p>在C/C++里面，因为有#ifdef，#ifndef这种条件预编译宏的存在，可以很方便为每个渠道做代码的定制化，但是Java不支持这种方式。那就是说，一份Java代码基本上只能编译出一份执行文件，那我们如何来解决这个问题呢。我们换一种思路来考虑问题：事实上我们并不排斥多份编译代码的存在，我们关心的是能否只维护一份代码。</p>
+<p>在C/C++里面，因为有#ifdef，#ifndef这种条件预编译宏的存在，可以很方便为每个渠道做代码的定制化，但是Java不支持这种方式。那就是说，一份Java代码只能编译出一个执行文件(不要跟我说动态运行这件事，这不是编译期的事情)，那我们如何来解决这个问题呢。换一种思路来考虑问题：事实上我们并不排斥多份编译代码的存在，我们关心的是能否只维护一份代码。</p>
 
 <p>Antenna用一种取巧的方式解决了这个问题：每次通过对原始代码做预处理，得到一份中间代码，然后对这份中间代码进行编译发布。</p>
 
@@ -142,7 +142,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>而当我们执行<code>preproc</code>的时候，则会得出以下的中间代码：</p>
+<p>而当我们执行<code>preproc_qq</code>的时候，则会得出以下的中间代码：</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -182,7 +182,7 @@
 
 <p>这里需要注意的是，Antenna在执行的时候，会把不需要的相应代码块用<code>//@</code>注释掉。</p>
 
-<h3>接下来我们来解决资源打包问题：</h3>
+<h3>接下来解决资源打包问题：</h3>
 
 <p>Android打包应用，一般会经过以下几个步骤：</p>
 
